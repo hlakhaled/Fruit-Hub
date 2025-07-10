@@ -22,4 +22,11 @@ class Styles {
     fontFamily: 'Cairo',
     fontWeight: FontWeight.w700,
   );
+
+  static const TextStyle style19 = TextStyle(
+    color: AppColors.gray950,
+    fontSize: 19,
+    fontFamily: 'Cairo',
+    fontWeight: FontWeight.w700,
+  );
 }
