@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/core/service/preference_manager.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/constants/assets.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
+import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
 import 'package:fruit_hub/features/on_boarding/data/models/page_view_item_model.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -42,7 +44,19 @@ class PageViewItem extends StatelessWidget {
                   top: 60,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: Text("تخط", style: Styles.style13),
+                    child: GestureDetector(
+                      onTap: () {
+                        PreferenceManager.setBool(
+                          key: "on Boarding view",
+                          value: true,
+                        );
+                        Navigator.pushReplacementNamed(
+                          context,
+                          LoginView.routeName,
+                        );
+                      },
+                      child: Text("تخط", style: Styles.style13),
+                    ),
                   ),
                 ),
               ),
