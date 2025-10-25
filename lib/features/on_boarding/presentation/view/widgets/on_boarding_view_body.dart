@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/core/service/preference_manager.dart';
-import 'package:fruit_hub/core/utils/app_colors.dart';
+
 import 'package:fruit_hub/core/utils/common_widgets/custom_button.dart';
+import 'package:fruit_hub/core/utils/constants/app_colors.dart';
 import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
+
 import 'package:fruit_hub/features/on_boarding/data/models/page_view_item_model.dart';
 
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/page_view_item.dart';
@@ -79,6 +81,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ? Padding(
                 padding: const EdgeInsets.only(bottom: 43, top: 29),
                 child: CustomButton(
+                  title: "ابدأ الان",
                   onTap: () {
                     PreferenceManager.setBool(
                       key: "on Boarding view",

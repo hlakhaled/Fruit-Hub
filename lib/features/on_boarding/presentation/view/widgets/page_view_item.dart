@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruit_hub/core/service/preference_manager.dart';
-import 'package:fruit_hub/core/utils/app_colors.dart';
+import 'package:fruit_hub/core/utils/constants/app_colors.dart';
 import 'package:fruit_hub/core/utils/constants/assets.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
 import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
@@ -55,7 +55,7 @@ class PageViewItem extends StatelessWidget {
                           LoginView.routeName,
                         );
                       },
-                      child: Text("تخط", style: Styles.style13),
+                      child: Text("تخط", style: Styles.normal13),
                     ),
                   ),
                 ),
@@ -68,20 +68,20 @@ class PageViewItem extends StatelessWidget {
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(' Fruit', style: Styles.style23),
+                  Text(' Fruit', style: Styles.bold23),
                   Text(
                     'HUB',
-                    style: Styles.style23.copyWith(color: AppColors.orange500),
+                    style: Styles.bold23.copyWith(color: AppColors.orange500),
                   ),
                   Text(
                     ' مرحبًا بك في',
-                    style: Styles.style23.copyWith(color: AppColors.gray950),
+                    style: Styles.bold23.copyWith(color: AppColors.gray950),
                   ),
                 ],
               )
             : Text(
                 pageViewItemModel.title,
-                style: Styles.style23.copyWith(color: AppColors.gray950),
+                style: Styles.bold23.copyWith(color: AppColors.gray950),
               ),
 
         Padding(
@@ -89,7 +89,7 @@ class PageViewItem extends StatelessWidget {
           child: Text(
             pageViewItemModel.desc,
             textAlign: TextAlign.center,
-            style: Styles.style13.copyWith(
+            style: Styles.normal13.copyWith(
               fontWeight: FontWeight.w600,
               color: AppColors.gray500,
             ),

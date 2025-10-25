@@ -7,7 +7,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style: Styles.style19),
+      elevation: 0,
+      title: Text(title, style: Styles.bold19),
       centerTitle: true,
       actions: [Icon(Icons.arrow_forward_ios_rounded), SizedBox(width: 8)],
     );
