@@ -7,7 +7,6 @@ class ResetPasswordView extends StatelessWidget {
   static const routeName = "resetPassword";
   @override
   Widget build(BuildContext context) {
-    
     return const Scaffold(
       appBar: CustomAppBar(title: "كلمة مرور جديدة"),
       body: ResetPasswordBody(),

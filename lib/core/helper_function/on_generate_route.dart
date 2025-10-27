@@ -3,7 +3,6 @@ import 'package:fruit_hub/features/auth/presentation/view/forgot_password.dart';
 import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
 import 'package:fruit_hub/features/auth/presentation/view/reset_password_view.dart';
 import 'package:fruit_hub/features/auth/presentation/view/sign_up_view.dart';
-import 'package:fruit_hub/features/auth/presentation/view/widget/forgot_password_body.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:fruit_hub/features/splash_view/presentation/view/splash_view.dart';
 

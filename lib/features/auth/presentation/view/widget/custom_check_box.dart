@@ -3,8 +3,8 @@ import 'package:fruit_hub/core/utils/constants/app_colors.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
 
 class CustomCheckbox extends StatefulWidget {
-  const CustomCheckbox({super.key});
-
+  const CustomCheckbox({super.key, required this.valueChanged});
+  final ValueChanged<bool> valueChanged;
   @override
   State<CustomCheckbox> createState() => _CustomCheckboxState();
 }
@@ -21,8 +21,9 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         activeColor: AppColors.green700,
         value: isSelected,
         onChanged: (value) {
+          widget.valueChanged(value!);
           setState(() {
-            isSelected = value!;
+            isSelected = value;
           });
         },
       ),
