@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/core/utils/common_widgets/custom_button.dart';
-import 'package:fruit_hub/core/utils/constants/app_colors.dart';
-import 'package:fruit_hub/core/utils/constants/assets.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
-import 'package:fruit_hub/features/auth/presentation/manager/Auth/auth_cubit.dart';
 import 'package:fruit_hub/features/auth/presentation/manager/LoginCubit/login_cubit.dart';
-import 'package:fruit_hub/features/auth/presentation/view/sign_up_view.dart';
-import 'package:fruit_hub/features/auth/presentation/view/widget/custom_line.dart';
-import 'package:fruit_hub/features/auth/presentation/view/widget/custom_outline_button.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_text_form_field.dart';
+import 'package:fruit_hub/features/auth/presentation/view/widget/or_divider.dart';
+import 'package:fruit_hub/features/auth/presentation/view/widget/register_redirect_row.dart';
+import 'package:fruit_hub/features/auth/presentation/view/widget/social_login_section.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -69,63 +66,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 space: 0,
               ),
               SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "لا تمتلك حساب؟",
-                    style: Styles.semiBold16.copyWith(color: AppColors.gray400),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        SignUpView.routeName,
-                      );
-                    },
-                    child: Text(
-                      " قم بإنشاء حساب",
-                      style: Styles.semiBold16.copyWith(
-                        color: AppColors.green700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
+              RegisterRedirectRow(),
               SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomLine(),
-                  Padding(
-                    padding: EdgeInsetsGeometry.symmetric(horizontal: 14),
-                    child: Text("أو", style: Styles.semiBold16),
-                  ),
-                  CustomLine(),
-                ],
-              ),
+              OrDivider(),
               SizedBox(height: 32),
-              CustomOutlineButton(
-                onpress: () {
-                  context.read<LoginCubit>().signInWithGoogle();
-                },
-                svgPicture: Assets.assetsImagesGoogle,
-                title: "تسجيل بواسطة جوجل",
-              ),
-              SizedBox(height: 16),
-              CustomOutlineButton(
-                svgPicture: Assets.assetsImagesApple,
-                title: "تسجيل بواسطة أبل",
-              ),
-              SizedBox(height: 16),
-              CustomOutlineButton(
-                onpress: () {
-                  context.read<LoginCubit>().signInWithFacebook();
-                },
-                svgPicture: Assets.assetsImagesFacebook,
-                title: "تسجيل بواسطة فيسبوك",
-              ),
+              SocialLoginSection(),
             ],
           ),
         ),

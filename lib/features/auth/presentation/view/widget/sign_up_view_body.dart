@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/core/utils/common_widgets/custom_button.dart';
-import 'package:fruit_hub/core/utils/constants/app_colors.dart';
-import 'package:fruit_hub/core/utils/constants/styles.dart';
 import 'package:fruit_hub/features/auth/presentation/manager/Auth/auth_cubit.dart';
-import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_check_box.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_text_form_field.dart';
+import 'package:fruit_hub/features/auth/presentation/view/widget/login_redirect_row.dart';
 
 class SignUpBody extends StatefulWidget {
   const SignUpBody({super.key});
@@ -89,29 +87,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                 space: 0,
               ),
               SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "تمتلك حساب بالفعل؟",
-                    style: Styles.semiBold16.copyWith(color: AppColors.gray400),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        LoginView.routeName,
-                      );
-                    },
-                    child: Text(
-                      " تسجيل دخول",
-                      style: Styles.semiBold16.copyWith(
-                        color: AppColors.green700,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              LoginRedirectRow(),
             ],
           ),
         ),
