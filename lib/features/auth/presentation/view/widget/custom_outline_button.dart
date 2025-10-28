@@ -8,13 +8,15 @@ class CustomOutlineButton extends StatelessWidget {
     super.key,
     required this.svgPicture,
     required this.title,
+    this.onpress,
   });
+  final void Function()? onpress;
   final String svgPicture;
   final String title;
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onpress,
       style: OutlinedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(16),

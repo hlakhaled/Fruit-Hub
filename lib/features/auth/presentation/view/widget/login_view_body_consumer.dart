@@ -7,7 +7,8 @@ import 'package:flutter/material.dart'
         Text,
         SnackBar;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/features/auth/presentation/manager/Auth/auth_cubit.dart';
+import 'package:fruit_hub/features/auth/presentation/manager/LoginCubit/login_cubit.dart';
+import 'package:fruit_hub/features/auth/presentation/manager/LoginCubit/login_state.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/login_view_body.dart';
 import 'package:get_it/get_it.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -18,19 +19,21 @@ class LoginViewBodyConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I<AuthCubit>(),
-      child: BlocConsumer<AuthCubit, AuthState>(
+      create: (context) => GetIt.I<LoginCubit>(),
+      child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state is AuthFailure) {
+          if (state is LoginFailure) {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.message)));
           }
-          if (state is AuthSuccess) {}
+          if (state is LoginSuccess) {
+            // Navigator.pushReplacementNamed(context, SignUpView.routeName);
+          }
         },
         builder: (context, state) {
           return ModalProgressHUD(
-            inAsyncCall: state is AuthLoading ? true : false,
+            inAsyncCall: state is LoginLoading ? true : false,
             child: LoginViewBody(),
           );
         },

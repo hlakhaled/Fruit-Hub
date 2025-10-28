@@ -32,7 +32,6 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, AuthEntity>> loginUser(
     String email,
     String password,
-  
   ) async {
     try {
       final user = await firebaseAuthService.signInWithEmailAndPassword(
@@ -43,6 +42,30 @@ class AuthRepoImpl extends AuthRepo {
     } on CustomException catch (e) {
       return left(Failure(errorMsg: e.message));
     } catch (e) {
+      return left(Failure(errorMsg: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AuthEntity>> signInWithGoogle() async {
+    try {
+      final user = await firebaseAuthService.signInWithGoogle();
+
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(Failure(errorMsg: e.message));
+    } catch (e) {
+      return left(Failure(errorMsg: e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, AuthEntity>> signInWithFacebook()async {
+     try {
+      final user = await firebaseAuthService.signInWithFacebook();
+
+      return right(UserModel.fromFirebaseUser(user));
+    }  catch (e) {
       return left(Failure(errorMsg: e.toString()));
     }
   }

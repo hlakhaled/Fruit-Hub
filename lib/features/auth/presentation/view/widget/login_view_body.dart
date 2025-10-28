@@ -5,6 +5,8 @@ import 'package:fruit_hub/core/utils/constants/app_colors.dart';
 import 'package:fruit_hub/core/utils/constants/assets.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
 import 'package:fruit_hub/features/auth/presentation/manager/Auth/auth_cubit.dart';
+import 'package:fruit_hub/features/auth/presentation/manager/LoginCubit/login_cubit.dart';
+import 'package:fruit_hub/features/auth/presentation/view/sign_up_view.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_line.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_outline_button.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_text_form_field.dart';
@@ -53,7 +55,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 onTap: () {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();
-                    context.read<AuthCubit>().loginCubit(
+                    context.read<LoginCubit>().loginCubit(
                       email: email,
                       password: password,
                     );
@@ -67,24 +69,30 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 space: 0,
               ),
               SizedBox(height: 32),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "لا تمتلك حساب؟",
-                      style: Styles.semiBold16.copyWith(
-                        color: AppColors.gray400,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " قم بإنشاء حساب",
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "لا تمتلك حساب؟",
+                    style: Styles.semiBold16.copyWith(color: AppColors.gray400),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        SignUpView.routeName,
+                      );
+                    },
+                    child: Text(
+                      " قم بإنشاء حساب",
                       style: Styles.semiBold16.copyWith(
                         color: AppColors.green700,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+
               SizedBox(height: 32),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -99,6 +107,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               SizedBox(height: 32),
               CustomOutlineButton(
+                onpress: () {
+                  context.read<LoginCubit>().signInWithGoogle();
+                },
                 svgPicture: Assets.assetsImagesGoogle,
                 title: "تسجيل بواسطة جوجل",
               ),
@@ -109,6 +120,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               SizedBox(height: 16),
               CustomOutlineButton(
+                onpress: () {
+                  context.read<LoginCubit>().signInWithFacebook();
+                },
                 svgPicture: Assets.assetsImagesFacebook,
                 title: "تسجيل بواسطة فيسبوك",
               ),

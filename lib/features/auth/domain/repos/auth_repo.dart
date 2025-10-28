@@ -9,9 +9,7 @@ abstract class AuthRepo {
     String password,
     String name,
   );
-  Future<Either<Failure, AuthEntity>> loginUser(
-    String email,
-    String password,
-   
-  );
+  Future<Either<Failure, AuthEntity>> loginUser(String email, String password);
+  Future<Either<Failure, AuthEntity>> signInWithGoogle();
+    Future<Either<Failure, AuthEntity>> signInWithFacebook();
 }
