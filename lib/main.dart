@@ -6,7 +6,6 @@ import 'package:fruit_hub/core/helper_function/on_generate_route.dart';
 import 'package:fruit_hub/core/service/get_it_services.dart';
 import 'package:fruit_hub/core/service/preference_manager.dart';
 import 'package:fruit_hub/core/utils/constants/app_colors.dart';
-import 'package:fruit_hub/features/auth/presentation/view/login_view.dart';
 import 'package:fruit_hub/features/splash_view/presentation/view/splash_view.dart';
 import 'package:fruit_hub/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';

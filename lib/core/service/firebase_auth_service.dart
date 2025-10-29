@@ -8,6 +8,7 @@ class FirebaseAuthService {
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -89,16 +90,22 @@ class FirebaseAuthService {
   }
 
   Future<User> signInWithFacebook() async {
-    // Trigger the sign-in flow
+   
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    // Create a credential from the access token
+    
     final OAuthCredential facebookAuthCredential =
         FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
-
-    // Once signed in, return the UserCredential
     return (await FirebaseAuth.instance.signInWithCredential(
       facebookAuthCredential,
     )).user!;
+  }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
   }
 }

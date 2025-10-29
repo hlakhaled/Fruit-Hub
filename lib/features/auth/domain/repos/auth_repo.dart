@@ -11,5 +11,11 @@ abstract class AuthRepo {
   );
   Future<Either<Failure, AuthEntity>> loginUser(String email, String password);
   Future<Either<Failure, AuthEntity>> signInWithGoogle();
-    Future<Either<Failure, AuthEntity>> signInWithFacebook();
+  Future<Either<Failure, AuthEntity>> signInWithFacebook();
+  Future<Either<Failure, void>> sendPasswordResetEmail(String email);
+  Future addData({required AuthEntity authEntity});
+  Future<Map<String,dynamic>> getData({
+    required String path,
+    required String uid,
+  });
 }

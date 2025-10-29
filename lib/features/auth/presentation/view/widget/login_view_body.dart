@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/core/utils/common_widgets/custom_button.dart';
 import 'package:fruit_hub/core/utils/constants/styles.dart';
 import 'package:fruit_hub/features/auth/presentation/manager/LoginCubit/login_cubit.dart';
+import 'package:fruit_hub/features/auth/presentation/view/forgot_password.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/custom_text_form_field.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/or_divider.dart';
 import 'package:fruit_hub/features/auth/presentation/view/widget/register_redirect_row.dart';
@@ -45,7 +46,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [Text("نسيت كلمة المرور؟", style: Styles.semiBold13)],
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        ForgotPasswordView.routeName,
+                      );
+                    },
+                    child: Text("نسيت كلمة المرور؟", style: Styles.semiBold13),
+                  ),
+                ],
               ),
               SizedBox(height: 42),
               CustomButton(

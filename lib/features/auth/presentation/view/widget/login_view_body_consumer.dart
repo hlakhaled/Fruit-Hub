@@ -27,6 +27,7 @@ class LoginViewBodyConsumer extends StatelessWidget {
               context,
             ).showSnackBar(SnackBar(content: Text(state.message)));
           }
+
           if (state is LoginSuccess) {
             // Navigator.pushReplacementNamed(context, SignUpView.routeName);
           }

@@ -35,4 +35,5 @@ class LoginCubit extends Cubit<LoginState> {
       (r) => emit(LoginSuccess(authEntity: r)),
     );
   }
+
 }
